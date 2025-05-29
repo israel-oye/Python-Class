@@ -1,0 +1,19 @@
+Functions
+Modules vs Packages...✅
+Calculator✅
+Scope and nested Functions✅
+Recursion✅
+lambdas ✅
+Higher Order Functions✅
+yield keyword?✅
+Dictionary comprehension*✅
+Decorators✅
+
+
+Exception Handling✅
+Context Management and File handling✅
+
+OOP
+Multithreading
+Serialization and Deserialization.
+Tkinter
