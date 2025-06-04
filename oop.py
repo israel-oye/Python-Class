@@ -706,4 +706,165 @@ farouq.write_code()
   for Textbook and add_bookmark() for Novel.
  
  Write a program that creates instances of Textbook and Novel, and demonstrates the use of both inherited and unique methods
+
+ Inheritance Exercises. 
+Attempt at least 5 of the following. You can add in setters and getters to your implementation if you like.
+
+1. *Animal Inheritance*
+* Create a base class `Animal` with attributes `name` and `age`, and methods `eat()` and `sleep()`.
+* Derive two subclasses: `Dog` with `bark()`, and `Cat` with `meow()`.
+* Write a program to create instances of both and call all relevant methods.
+
+2. *Vehicle Inheritance*
+* Create a base class `Vehicle` with `make`, `model`, and `year`; methods `start()` and `stop()`.
+* Subclasses: `Car` with `drive()`, and `Motorcycle` with `wheelie()`.
+* Demonstrate usage with class instances.
+
+3. *Employee Inheritance*
+* Base class `Employee` with `name`, `employee_id`, `salary`, and methods `get_details()` and `give_raise()`.
+* Subclasses: `Manager` with `assign_task()`, and `Developer` with `write_code()`.
+* Show how to use the base and derived class methods.
+
+4. *Shape Inheritance*
+* Base class `Shape` with `color` and `area`, and method `calculate_area()`.
+* Subclasses:
+  * `Circle` with `get_radius()`
+  * `Rectangle` with `get_length_and_width()`
+  * `Triangle` with `get_base_and_height()`
+* Implement and test all methods.
+
+5. *Bank Account Inheritance*
+* `BankAccount` class with `account_number`, `balance`; methods `deposit()` and `withdraw()`.
+* Subclasses:
+  * `CheckingAccount` with `apply_monthly_fee()`
+  * `SavingsAccount` with `calculate_interest()`
+* Create and interact with each account type.
+
+6. *Furniture Inheritance*
+* Base class `Furniture` with `material`, `color`, `price`; methods `assemble()` and `clean()`.
+* Subclasses:
+  * `Chair` with `adjust_height()`
+  * `Table` with `expand()`
+  * `Bed` with `add_headboard()`
+* Demonstrate the furniture behavior.
+
+7. *Book Inheritance*
+* Base class `Book` with `title`, `author`, `genre`; methods `read()` and `bookmark()`.
+* Subclasses:
+  * `Textbook` with `assign_chapter()`
+  * `Novel` with `add_bookmark()`
+* Instantiate both types and test behavior.
+
+8. *Musical Instrument Inheritance*
+* Base class `MusicalInstrument` with `type`, `brand`, `price`; methods `play()` and `tune()`.
+* Subclasses:
+  * `Guitar` with `change_strings()`
+  * `Piano` with `adjust_pedals()`
+  * `Violin` with `rosin_bow()`
+* Create and use instruments.
+
+9. *Clothing Inheritance*
+* Base class `Clothing` with `size`, `material`, `price`; methods `wash()` and `fold()`.
+* Subclasses:
+  * `Shirt` with `iron()`
+  * `Pants` with `hem()`
+* Practice method calls using class instances.
+
+10. *Electronic Device Inheritance*
+* Base class `ElectronicDevice` with `brand`,  `switched_on` `model`, add a setter & getter for `power_consumption`;
+  methods `turn_on()` and `turn_off()`.
+  def turn_off(self):
+    self.switched_on = False
+* Subclasses:
+  * `Laptop` with `hibernate()`
+  * `Smartphone` with `take_photo()`
+  * `TV` with `change_channel()`
+* Test each class with real-world use cases.
+
+Have fun, guys.
 '''
+class ElectronicDevice:
+    def __init__(
+            self,
+            brand: str,
+            model: str,
+            power_consumption: float,
+            switched_on: bool = False
+            ):
+        self.brand = brand
+        self.model = model
+        self.__power_consumption = power_consumption
+        self.switched_on = switched_on
+
+    @property
+    def power_consumption(self):
+        return self.__power_consumption
+    
+    @power_consumption.setter
+    def power_consumption(self, value: float):
+        self.__power_consumption = value
+
+    def turn_on(self):
+        self.switched_on = True
+        print('Switched on...')
+
+    def turn_off(self):
+        self.switched_on = False
+        print('Switched of...')
+
+
+class Laptop(ElectronicDevice):
+    def __init__(self, brand, model, power_consumption, switched_on = False):
+        super().__init__(brand, model, power_consumption, switched_on)
+
+    def hibernate(self):
+        print('Saving your work...')
+        super().turn_off()
+
+
+class SmartPhone(ElectronicDevice):
+    def take_photo(self):
+        print('Chakam! 📸')
+
+
+class Television(ElectronicDevice):
+    def __init__(
+            self,
+            brand,
+            model,
+            power_consumption,
+            size: float,
+            input_: str,
+            switched_on = False
+            ):
+        self.size = size
+        self.__input_type = input_
+        super().__init__(brand, model, power_consumption, switched_on)
+
+    # def get_input(self):
+    #     return self.input
+    
+    # def set_input(self, new_input: str):
+    #     if len(new_input) == 0:
+    #         print('No signal detected')
+    #     self.input = new_input
+    #     print(f"Input updated to {new_input}")
+
+    @property
+    def input_type(self):
+        return self.__input_type
+    
+    @input_type.setter
+    def input_type(self, new_input_type: str):
+        self.__input_type = new_input_type
+
+
+oraimo_tv = Television('Oraimo', 'TuVace', 100.5, 55, 'AV')
+oraimo_tv.turn_on()
+
+# oraimo_tv.set_input('HDMI')
+# print(oraimo_tv.get_input())
+print(oraimo_tv.power_consumption)
+
+oraimo_tv.input_type = 'ChromeCast'
+print(oraimo_tv.input_type)
