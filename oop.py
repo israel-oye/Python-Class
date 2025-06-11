@@ -868,3 +868,38 @@ print(oraimo_tv.power_consumption)
 
 oraimo_tv.input_type = 'ChromeCast'
 print(oraimo_tv.input_type)
+
+class Animal:
+    def move(self):
+        print('Moving...')
+
+    def eat(self):
+        print('Eating food')
+
+
+class Canine:
+    def eat(self):
+        print('Eating carnivorous food')
+
+class Dog(Animal, Canine):
+    def bark(self):
+        print('Woof Woof!')
+
+
+class Puppy(Dog):
+    def weep(self):
+        print('Weeping..')
+
+    def bark(self):
+        print('Funny un-scary barking..')
+        
+
+bingo = Dog()
+bingo.bark()
+bingo.eat()
+# print(Dog.__mro__)
+
+little_jay = Puppy()
+# little_jay.weep()
+little_jay.bark()
+# little_jay.move()
