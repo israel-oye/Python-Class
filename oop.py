@@ -582,23 +582,26 @@ car1.speed = 360.85
     
 
 # joe = Student()
+from abc import ABC, abstractmethod
 
-class Polygon:
+class Polygon(ABC):
     def __init__(self, sides):
         self.sides = sides
-
+    
+    @abstractmethod
     def describe(self):
-        print(f"I'm a shape with {self.sides} sides")
+        pass
 
 class Square(Polygon):
     def __init__(self, sidex):
         super().__init__(sides=sidex)
 
     def describe(self):
-        return super().describe()
+        print(f"I'm a shape with {self.sides} sides")
 
 
-
+# poly = Polygon(4)
+# poly.describe()
 sq = Square(4)
 sq.describe()
 
@@ -881,7 +884,7 @@ class Canine:
     def eat(self):
         print('Eating carnivorous food')
 
-class Dog(Animal, Canine):
+class Dog(Canine, Animal):
     def bark(self):
         print('Woof Woof!')
 
@@ -895,11 +898,81 @@ class Puppy(Dog):
         
 
 bingo = Dog()
-bingo.bark()
 bingo.eat()
-# print(Dog.__mro__)
+# bingo.eat()
+print(Dog.__mro__)
 
-little_jay = Puppy()
+# little_jay = Puppy()
 # little_jay.weep()
-little_jay.bark()
+# little_jay.bark()
 # little_jay.move()
+
+class Vehicle(ABC):
+
+    @abstractmethod
+    def move(self):
+        pass
+
+class Bicycle(Vehicle):
+    def move(self):
+        print('Moving on two wheels')
+
+class Car(Vehicle):
+    def move(self):
+        print('Moving on 4 wheels')
+
+# Premise 1: A cannot be A and Non-A at the same time
+# Premise 2: Nothing cannot be Nothing and Something at the same time
+# Conclusion: Nothing is NOT something
+
+class Shape(ABC):
+
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+
+class Rectangle(Shape):
+    def __init__(self, length: float, height: float):
+        self.length = length
+        self.height = height
+
+    def area(self):
+        return self.length * self.height
+    
+    def perimeter(self):
+        return 2 * (self.length + self.height)
+    
+
+class Circle(Shape):
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def area(self):
+        import math
+        return math.pi * (self.radius ** 2)
+    
+    def perimeter(self):
+        import math
+        return 2 * math.pi * self.radius
+    
+    @classmethod
+    def from_diameter(cls, diameter: float):
+        return cls(radius = diameter / 2)
+    
+# my_circle = Circle.from_diameter(14)
+similar_circle = Circle(radius=7)
+print(similar_circle.perimeter())
+print(similar_circle.area())
+
+
+# print(my_circle.radius == similar_circle.radius)
+
+rector = Rectangle(4, 6)
+print(rector.area())
+print(rector.perimeter())
+    
