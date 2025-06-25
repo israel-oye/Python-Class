@@ -38,13 +38,18 @@ class Student:
     # Static attrribute
     school_name = 'Aptech Computer Institute'
     is_institute = True
+    all_students = []
 
     def __init__(self, name: str):
         self.name: str = name # Instance attribute
         self.__score: int = 0
+        Student.all_students.append(self)
 
     def __str__(self):
         return f"<Student: {self.name}>"
+    
+    def __repr__(self):
+        return self.__str__()
     
     @property
     def score(self):
@@ -85,6 +90,7 @@ ololade = Student('Ololade')
 # print(ololade.get_school())
 lolade.score = 90
 print(lolade.get_grade())
+print(Student.all_students)
 
 # print(ololade.school_name)
 # print(lolade.school_name)
@@ -926,6 +932,12 @@ class Car(Vehicle):
 # Conclusion: Nothing is NOT something
 
 class Shape(ABC):
+    def __init__(self):
+        super().__init__()
+        print('Constructor called')
+
+    def describe(self):
+        print("I'm a shape")
 
     @abstractmethod
     def area(self):
@@ -940,6 +952,7 @@ class Rectangle(Shape):
     def __init__(self, length: float, height: float):
         self.length = length
         self.height = height
+        super().__init__()
 
     def area(self):
         return self.length * self.height
@@ -965,14 +978,88 @@ class Circle(Shape):
         return cls(radius = diameter / 2)
     
 # my_circle = Circle.from_diameter(14)
-similar_circle = Circle(radius=7)
-print(similar_circle.perimeter())
-print(similar_circle.area())
+# similar_circle = Circle(radius=7)
+# print(similar_circle.perimeter())
+# print(similar_circle.area())
+# similar_circle.describe()
+
+# # shape = Shape()
+# # print(my_circle.radius == similar_circle.radius)
+
+# rector = Rectangle(4, 6)
+# print(rector.area())
+# rector.describe()
+# print(rector.perimeter())
+
+class Appliance(ABC):
+    def __init__(self, brand: str):
+        self.brand = brand
+        super().__init__()
+
+    @abstractmethod
+    def operate(self):
+        pass
+
+    def turn_on(self):
+        print('Switching on...')
+
+# camelCase, PascalCase, snake_case
+class WashingMachine(Appliance):
+    def operate(self):
+        print('Operating washing machine...')
 
 
-# print(my_circle.radius == similar_circle.radius)
+class Microwave(Appliance):
+    def operate(self):
+        print('Heat level set...')
 
-rector = Rectangle(4, 6)
-print(rector.area())
-print(rector.perimeter())
+
+"""
+Build an employee system with the following:
+
+1. **Abstract class**: `Employee`
+
+   * Fields: `name`, `department`
+   * Abstract method: `calculate_salary()`
+   * Concrete method: `get_details()` – returns name and department
+
+2. **Subclasses**:
+
+   * `FullTimeEmployee` – fixed salary
+   * `PartTimeEmployee` – hourly wage × hours worked
+
+3. Create instances of each employee type and display their details and salary.
+
+#### Bonus:
+
+* Add a class attribute in `Employee` to keep track of the number of employees created.
+
+"""
+
+class Employee(ABC):
+    all_employees = []
+
+    def __init__(self, name:str, dept: str, salary: float):
+        self.name = name
+        self.department = dept
+        self.salary = salary
+        Employee.all_employees.append(self)
+
+    @abstractmethod
+    def calculate_salary(self):
+        pass
+
+    def get_details(self):
+        return {'name': self.name, 'dept': self.department}
+
+class FullTimeEmployee(Employee):
+    def calculate_salary(self):
+        return self.salary
     
+
+class PartTimeEmployee(Employee):
+    def calculate_salary(self, hours_worked):
+        return self.salary * hours_worked
+
+print(Employee.all_employees)
+False
