@@ -17,3 +17,18 @@ console.log(JSON.stringify(studentDetails));
 //     .then(data => {
 //         console.log(data)
 //     });
+let data = `{
+ "1": 101,
+ "name": "Segun",
+ "job": "Professional Doom Scroller",
+ "is_employed": false,
+ "friends": [
+  "Shaul",
+  "Yitzchak",
+  "Shimeon",
+  "Yochanan"
+ ]
+}`
+let newObj = JSON.parse(data);
+
+console.log(newObj.friends.length);

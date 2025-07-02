@@ -1,0 +1,12 @@
+{
+ "1": 101,
+ "name": "Segun",
+ "job": "Professional Doom Scroller",
+ "is_employed": false,
+ "friends": [
+  "Shaul",
+  "Yitzchak",
+  "Shimeon",
+  "Yochanan"
+ ]
+}

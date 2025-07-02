@@ -1,0 +1,14 @@
+{
+  "name": "Pearson Jude",
+  "height": 1.89,
+  "nationality": "British",
+  "spouse": null,
+  "hobbies": [
+    "skiing",
+    "music"
+  ],
+  "other_info": {
+    "health": "Not checked \u274c",
+    "insurance": "Paid."
+  }
+}
