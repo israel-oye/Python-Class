@@ -5,15 +5,29 @@ user_details = {
     'name': 'Segun',
     'job': 'Professional Doom Scroller',
     'is_employed': False,
+    'challenges': None,
     'friends': ['Shaul', 'Yitzchak', 'Shimeon', 'Yochanan']
 }
+
+class AptechStudent:
+    def __init__(self, name):
+        self.name = name
+
+    def to_json(self):
+        import json
+        return json.dumps(self.__dict__)
+
+student = AptechStudent('Farook')
+# print(student.__dict__)
+print(student.to_json())
+# print(json.dumps(student.__dict__))
 
 # Dumps -> Encoding
 json_str = json.dumps(user_details, indent=1)
 # print(json_str)
 
-# with open('user.json', 'w') as file:
-#     json.dump(user_details, file, indent=2)
+with open('user.json', 'w') as file:
+    json.dump(user_details, file, indent=2)
 
 # with open('file.json', 'w') as f:
 #     json.dump(user_details, f, indent=1)
@@ -62,22 +76,29 @@ person = {
     }
 }
 
-# Serializing to a file
-with open('person-data.json', 'w') as person_file:
-    json.dump(person, person_file, indent=2)
+# # Serializing to a file
+# with open('person-data.json', 'w') as person_file:
+#     json.dump(person, person_file, indent=2)
 
-# Deserializng the file
-with open('person-data.json', 'r') as json_file:
-    deserialized_person = json.load(json_file)
+# # Deserializng the file
+# with open('person-data.json', 'r') as json_file:
+#     deserialized_person = json.load(json_file)
 # print(deserialized_person)
 
-print(deserialized_person['hobbies'][-1])
+with open('person-data.json', 'r') as person_file:
+    person_dict: dict  = json.load(person_file)
+    print(person_dict['hobbies'][0].upper())
 
-other_info: dict = deserialized_person['other_info']
+# print(deserialized_person['hobbies'][-1])
 
-# deserialized_person['other_info'].items()
-for key in other_info:
-    print(other_info[key].upper())
+# other_info: dict = deserialized_person['other_info']
 
-for key, value in other_info.items():
-    print(value.upper())
+# # deserialized_person['other_info'].items()
+# for key in other_info:
+#     print(other_info[key].upper())
+
+# for key, value in other_info.items():
+#     print(value.upper())
+
+# for value in other_info.values():
+#     print(value)

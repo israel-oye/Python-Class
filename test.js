@@ -6,7 +6,7 @@ let studentDetails = {
 
 studentDetails.school;
 
-// Serialization in Javascript
+// Serialization in Javascript / Encoding
 console.log(JSON.stringify(studentDetails));
 
 
@@ -29,6 +29,8 @@ let data = `{
   "Yochanan"
  ]
 }`
+
+// Deserialization OR Decoding
 let newObj = JSON.parse(data);
 
 console.log(newObj.friends.length);
