@@ -1,0 +1,64 @@
+{
+    "people": [
+        {
+            "name": "Alice",
+            "sex": "Female",
+            "age": 19
+        },
+        {
+            "name": "Bobola",
+            "sex": "Male",
+            "age": 18
+        },
+        {
+            "name": "Clausia",
+            "sex": "Female",
+            "age": 24
+        },
+        {
+            "name": "Desmond",
+            "sex": "Male",
+            "age": 16
+        },
+        {
+            "name": "Eliora",
+            "sex": "Female",
+            "age": 19
+        },
+        {
+            "name": "Felicia",
+            "sex": "Female",
+            "age": 20
+        },
+        {
+            "name": "Geronimo",
+            "sex": "Male",
+            "age": 19
+        },
+        {
+            "name": "Hafiz",
+            "sex": "Male",
+            "age": 21
+        },
+        {
+            "name": "Isak",
+            "sex": "Male",
+            "age": 22
+        },
+        {
+            "name": "Johan",
+            "sex": "Male",
+            "age": 17
+        },
+        {
+            "name": "Kamala",
+            "sex": "Female",
+            "age": 24
+        },
+        {
+            "name": "Latifa",
+            "sex": "Female",
+            "age": 18
+        }
+    ]
+}
