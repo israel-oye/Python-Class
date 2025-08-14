@@ -62,6 +62,7 @@ def on_submit():
 
 def on_get_list():
     item_display_lbl.config(text=list_box.get(ANCHOR))
+    list_box.delete(ANCHOR)
 
 
 submit_btn.config(command=on_submit)
