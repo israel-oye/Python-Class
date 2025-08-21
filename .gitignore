@@ -176,3 +176,4 @@ cython_debug/
 Py-Indepth-Intermediate.md
 Aptech DS class.ipynb
 requests_class\myVirtualEnv
+*.ipynb
