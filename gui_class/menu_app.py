@@ -40,7 +40,17 @@ open_menu.add_command(label='Window')
 
 file_menu.add_cascade(label='Open', menu=open_menu)
 
+view_menu = Menu(main_menu, tearoff=False)
+view_menu.add_command(label='Command Pallette')
+view_menu.add_command(label='Open View...')
+view_menu.add_separator()
 
+appearance_submenu = Menu(view_menu, tearoff=0)
+appearance_submenu.add_command(label='Fullscreen')
+appearance_submenu.add_command(label='Zen Mode')
+appearance_submenu.add_command(label='Centered Layout')
+
+view_menu.add_cascade(label='Appearance', menu=appearance_submenu)
 
 
 # 5
@@ -49,6 +59,7 @@ file_menu.add_cascade(label='Open', menu=open_menu)
 
 create_menu(menu_label='File', menu_widget=file_menu)
 create_menu(menu_label='Tools', menu_widget=tools_menu)
+main_menu.add_cascade(label='View', menu=view_menu)
 
 # 2
 window.config(menu=main_menu)
